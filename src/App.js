@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useTranslation, Trans } from "react-i18next";
+
+import Container from "@material-ui/core/Container";
+
+import Navbar from "./components/navbar/navbar";
+import ImageGrid from "./components/imageGrid/imageGrid";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { t, i18n } = useTranslation();
+
+      return (
+         <div>
+            <Navbar/>
+            <Container maxWidth={"lg"} style={{paddingTop: 100}}>
+                <h2>{t("propertyTitle")}</h2>
+                <ImageGrid/>
+            </Container>
+         </div>
+
+      );
 }
 
 export default App;
