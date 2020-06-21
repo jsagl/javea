@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from "@material-ui/core/Container";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -8,7 +8,7 @@ import i18next from "i18next";
 const Navbar = () => {
     const { t, i18n } = useTranslation();
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles((theme) => ({
         root: {
             backgroundColor: 'white',
             zIndex: 1200,
@@ -18,6 +18,7 @@ const Navbar = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            boxShadow: shadow,
         },
         container:{
             display: 'flex',
@@ -78,7 +79,9 @@ const Navbar = () => {
             top: 6,
             right: 0,
         }
-    });
+    }));
+
+    const [shadow, setShadow] = React.useState('');
 
     const classes = useStyles();
     const [language, setLanguage] = useState(i18next.language)
@@ -87,6 +90,20 @@ const Navbar = () => {
         i18n.changeLanguage(event.target.value);
         setLanguage(event.target.value);
     };
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => handleScroll());
+
+        return window.removeEventListener('scroll', () => handleScroll());
+    })
+
+    const handleScroll = () => {
+        if (window.scrollY > 10) {
+            setShadow('0 3px 9px -1px rgba(0,0,0,0.2)')
+        } else {
+            setShadow('')
+        }
+    }
 
     return (
 
