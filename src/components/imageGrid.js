@@ -11,6 +11,7 @@ const ImageGrid = () => {
             justifyContent: 'space-around',
             overflow: 'hidden',
             backgroundColor: theme.palette.background.paper,
+            marginBottom: 30,
         },
         gridList: {
             width: '100%',
@@ -32,7 +33,7 @@ const ImageGrid = () => {
 
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <div className={classes.root} id='image-grid'>
             <GridList cellHeight={160} className={classes.gridList} cols={6} rows={2}>
                 <GridListTile cols={4} rows={2} classes={{tile: classes.topLeftTile}}>
                     <img src="https://source.unsplash.com/random" alt="house-picture" />

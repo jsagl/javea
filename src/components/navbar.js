@@ -10,7 +10,8 @@ const Navbar = () => {
 
     const useStyles = makeStyles({
         root: {
-            // backgroundColor: 'grey',
+            backgroundColor: 'white',
+            zIndex: 1200,
             height: 80,
             position: 'fixed',
             width: '100%',
@@ -93,13 +94,13 @@ const Navbar = () => {
             <Container maxWidth={"lg"} className={classes.container}>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent:'start'}}>
                     <div className={classes.imgContainer}>
-                        <img src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" style={{width: 40, height: 40}}/>
-                        <div style={{fontSize: 16}}>Casa Albi</div>
+                        <img src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" style={{height: 60}}/>
                     </div>
                     <a href="#" className={classes.link}>{t("navLinkPhotos")}</a>
                     <a href="#" className={classes.link}>{t("navLinkAmenities")}</a>
                     <a href="#" className={classes.link}>{t("navLinkReviews")}</a>
                     <a href="#" className={classes.link}>{t("navLinkLocation")}</a>
+                    <a href="#" className={classes.link}>{t("navLinkContact")}</a>
                 </div>
 
                 <div className={classes.selectButton}>
