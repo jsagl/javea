@@ -206,7 +206,7 @@ const Navbar = () => {
                 <div className={classes.navigationContainer} >
                     <div className={classes.imgContainer}>
                         <img onClick={() => handleClick()}
-                             src={process.env.PUBLIC_URL + 'images/logo.png'} alt="logo" style={{height: 60}}
+                             src={'./assets/logo.png'} alt="logo" style={{height: 60}}
                         />
                     </div>
                     <button className={classes.link} onClick={() => handleClick('#property-title')}>{t("navLinkPhotos")}</button>
@@ -218,7 +218,7 @@ const Navbar = () => {
                 <div className={classes.mobileNavContainer} >
                     <div className={classes.imgContainer}>
                         <img onClick={() => handleClick()}
-                             src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" className={classes.logo}
+                             src={'./assets/logo.png'} alt="logo" className={classes.logo}
                         />
                     </div>
                     <button className={classes.mobileNavButton} onClick={displayMobileNav}>
@@ -233,7 +233,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className={classes.selectButton}>
-                    <img src={`${process.env.PUBLIC_URL}images/flags/${language}.svg`} alt="logo" className={classes.flag}/>
+                    <img src={`./assets/flags/${language}.svg`} alt="logo" className={classes.flag}/>
                     <select value={language} onChange={changeLanguage} className={classes.select}>
                         <option value="en">English</option>
                         <option value="fr">Français</option>
