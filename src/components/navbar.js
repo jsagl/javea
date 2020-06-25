@@ -235,7 +235,7 @@ const Navbar = () => {
                 <div className={classes.selectButton}>
                     <img src={`./assets/flags/${language}.svg`} alt="logo" className={classes.flag}/>
                     <select value={language} onChange={changeLanguage} className={classes.select}>
-                        <option value="en">English</option>
+                        <option value="en-GB">English</option>
                         <option value="fr">Français</option>
                         <option value="es">Espagnol</option>
                     </select>
