@@ -206,7 +206,7 @@ const Navbar = () => {
                 <div className={classes.navigationContainer} >
                     <div className={classes.imgContainer}>
                         <img onClick={() => handleClick()}
-                             src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" style={{height: 60}}
+                             src={process.env.PUBLIC_URL + 'images/logo.png'} alt="logo" style={{height: 60}}
                         />
                     </div>
                     <button className={classes.link} onClick={() => handleClick('#property-title')}>{t("navLinkPhotos")}</button>

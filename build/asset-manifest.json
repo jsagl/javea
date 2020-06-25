@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/javea/static/css/main.c45dc39d.chunk.css",
+    "main.js": "/javea/static/js/main.1b6aefed.chunk.js",
+    "main.js.map": "/javea/static/js/main.1b6aefed.chunk.js.map",
+    "runtime-main.js": "/javea/static/js/runtime-main.68c29850.js",
+    "runtime-main.js.map": "/javea/static/js/runtime-main.68c29850.js.map",
+    "static/js/2.00c5eaee.chunk.js": "/javea/static/js/2.00c5eaee.chunk.js",
+    "static/js/2.00c5eaee.chunk.js.map": "/javea/static/js/2.00c5eaee.chunk.js.map",
+    "index.html": "/javea/index.html",
+    "precache-manifest.110e34985f702b461a6bfb8d15eceb7c.js": "/javea/precache-manifest.110e34985f702b461a6bfb8d15eceb7c.js",
+    "service-worker.js": "/javea/service-worker.js",
+    "static/css/main.c45dc39d.chunk.css.map": "/javea/static/css/main.c45dc39d.chunk.css.map",
+    "static/js/2.00c5eaee.chunk.js.LICENSE.txt": "/javea/static/js/2.00c5eaee.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.68c29850.js",
+    "static/js/2.00c5eaee.chunk.js",
+    "static/css/main.c45dc39d.chunk.css",
+    "static/js/main.1b6aefed.chunk.js"
+  ]
+}
