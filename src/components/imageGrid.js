@@ -91,8 +91,8 @@ const ImageGrid = () => {
         "https://images.unsplash.com/photo-1593011951062-fbeb9c4a484e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80",
         "https://images.unsplash.com/photo-1593090562755-8951634d408a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",
         "https://images.unsplash.com/photo-1592495994946-52ba21a70bdd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2586&q=80",
-        "https://source.unsplash.com/random",
-        "https://source.unsplash.com/random",
+        "https://images.unsplash.com/photo-1593081891731-fda0877988da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80",
+        "https://images.unsplash.com/photo-1592500595183-5e29fe490109?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",
         "https://source.unsplash.com/random",
     ]
 
