@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from "@material-ui/core/Container";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import { useTranslation, Trans } from "react-i18next";
+import MenuIcon from '@material-ui/icons/Menu';
+import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
 const Navbar = () => {
@@ -19,12 +20,63 @@ const Navbar = () => {
             justifyContent: 'center',
             alignItems: 'center',
             boxShadow: shadow,
+            [theme.breakpoints.down('md')]: {
+                height: 60,
+            },
         },
         container:{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexDirection: 'row',
+            height: '100%',
+        },
+        navigationContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent:'start',
+            [theme.breakpoints.down('md')]: {
+                display: 'none',
+            },
+        },
+        mobileNavContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent:'start',
+            [theme.breakpoints.up('lg')]: {
+                display: 'none',
+            },
+        },
+        mobileNavButton: {
+            color: "black",
+            backgroundColor: 'white',
+            borderRadius: 50,
+            padding: '3px 5px',
+            border: '1px solid transparent',
+            cursor: 'pointer',
+            transition: '0.3s linear',
+            "&:hover": {
+                backgroundColor: 'rgb(250, 250, 250)',
+            },
+            "&:focus": {
+                outline: 'none',
+            }
+        },
+        mobileLinksContainer: {
+            position: 'absolute',
+            transition: '0.1s linear',
+            top: 61,
+            left: 35,
+            height: height,
+            backgroundColor: 'white',
+            width: 150,
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: "column",
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 3px 9px -1px rgba(0,0,0,0.2)',
+            borderRadius: 5,
         },
         imgContainer: {
             display: 'flex',
@@ -32,18 +84,36 @@ const Navbar = () => {
             justifyContent:'center',
             flexDirection:'column',
             marginRight: '20px',
+            cursor: 'pointer',
+        },
+        logo: {
+            height: 60,
+            [theme.breakpoints.down('md')]: {
+                height: 40,
+            },
         },
         link: {
             color: "black",
+            fontSize: 16,
             fontWeight: 'bold',
+            backgroundColor: 'white',
+            border: 'none',
             textDecoration: "none",
             borderBottom: '5px solid white',
-            padding: '28px 6px 23px 6px',
+            padding: '30px 6px 26px 6px',
             margin: '0px 10px',
+            cursor: 'pointer',
             "&:hover": {
                 color: '#22e39e',
                 borderBottom: '5px solid #22e39e',
-            }
+            },
+            "&:focus": {
+                cursor: 'pointer',
+                outline: 'none',
+            },
+            [theme.breakpoints.down('md')]: {
+                padding: '6px 6px 6px 6px',
+            },
         },
         selectButton: {
             position: 'relative',
@@ -63,8 +133,10 @@ const Navbar = () => {
             MozAppearance: 'none', /* Firefox */
             WebkitAppearance: 'none', /* Safari and Chrome */
             Appearance: 'none',
+            cursor: 'pointer',
             '&:focus': {
                 outline: 'none',
+                cursor: 'pointer',
             },
             fontSize: 16,
         },
@@ -82,6 +154,7 @@ const Navbar = () => {
     }));
 
     const [shadow, setShadow] = React.useState('');
+    const [height, setHeight] = React.useState(0);
 
     const classes = useStyles();
     const [language, setLanguage] = useState(i18next.language)
@@ -98,10 +171,31 @@ const Navbar = () => {
     })
 
     const handleScroll = () => {
-        if (window.scrollY > 10) {
+        if (window.scrollY > 35) {
             setShadow('0 3px 9px -1px rgba(0,0,0,0.2)')
         } else {
             setShadow('')
+        }
+    }
+
+    const handleClick = (targetId) => {
+        const top = targetId ? document.querySelector(targetId).offsetTop - 100 : 0;
+
+        window.scrollTo({
+            top: top,
+            behavior: 'smooth',
+        });
+
+        if (height > 0) {
+            setHeight(0)
+        }
+    }
+
+    const displayMobileNav = () => {
+        if (height > 0) {
+            setHeight(0)
+        } else {
+            setHeight(200)
         }
     }
 
@@ -109,17 +203,35 @@ const Navbar = () => {
 
         <div className={classes.root}>
             <Container maxWidth={"lg"} className={classes.container}>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent:'start'}}>
+                <div className={classes.navigationContainer} >
                     <div className={classes.imgContainer}>
-                        <img src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" style={{height: 60}}/>
+                        <img onClick={() => handleClick()}
+                             src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" style={{height: 60}}
+                        />
                     </div>
-                    <a href="#" className={classes.link}>{t("navLinkPhotos")}</a>
-                    <a href="#" className={classes.link}>{t("navLinkAmenities")}</a>
-                    <a href="#" className={classes.link}>{t("navLinkReviews")}</a>
-                    <a href="#" className={classes.link}>{t("navLinkLocation")}</a>
-                    <a href="#" className={classes.link}>{t("navLinkContact")}</a>
+                    <button className={classes.link} onClick={() => handleClick('#property-title')}>{t("navLinkPhotos")}</button>
+                    <button className={classes.link} onClick={() => handleClick('#amenities')}>{t("navLinkAmenities")}</button>
+                    <button className={classes.link} onClick={() => handleClick('#reviews')}>{t("navLinkReviews")}</button>
+                    <button className={classes.link} onClick={() => handleClick('#location')}>{t("navLinkLocation")}</button>
+                    <button className={classes.link} onClick={() => handleClick('#contact')}>{t("navLinkContact")}</button>
                 </div>
-
+                <div className={classes.mobileNavContainer} >
+                    <div className={classes.imgContainer}>
+                        <img onClick={() => handleClick()}
+                             src={process.env.PUBLIC_URL + 'logo.png'} alt="logo" className={classes.logo}
+                        />
+                    </div>
+                    <button className={classes.mobileNavButton} onClick={displayMobileNav}>
+                        <MenuIcon />
+                    </button>
+                    <div className={classes.mobileLinksContainer}>
+                        <button className={classes.link} onClick={() => handleClick('#property-title')}>{t("navLinkPhotos")}</button>
+                        <button className={classes.link} onClick={() => handleClick('#amenities')}>{t("navLinkAmenities")}</button>
+                        <button className={classes.link} onClick={() => handleClick('#reviews')}>{t("navLinkReviews")}</button>
+                        <button className={classes.link} onClick={() => handleClick('#location')}>{t("navLinkLocation")}</button>
+                        <button className={classes.link} onClick={() => handleClick('#contact')}>{t("navLinkContact")}</button>
+                    </div>
+                </div>
                 <div className={classes.selectButton}>
                     <img src={`${process.env.PUBLIC_URL}images/flags/${language}.svg`} alt="logo" className={classes.flag}/>
                     <select value={language} onChange={changeLanguage} className={classes.select}>

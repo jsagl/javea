@@ -4,6 +4,17 @@ import { useTranslation } from "react-i18next";
 import Separator from "./separator";
 
 import HomeIcon from '@material-ui/icons/Home';
+import PhoneIcon from '@material-ui/icons/Phone';
+import MailIcon from '@material-ui/icons/Mail';
+import PoolIcon from '@material-ui/icons/Pool';
+import OutdoorGrillIcon from '@material-ui/icons/OutdoorGrill';
+import BathtubIcon from '@material-ui/icons/Bathtub';
+import WifiIcon from '@material-ui/icons/Wifi';
+import DeckIcon from '@material-ui/icons/Deck';
+import NatureIcon from '@material-ui/icons/Nature';
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import KingBedIcon from '@material-ui/icons/KingBed';
+import SingleBedIcon from '@material-ui/icons/SingleBed';
 import Grid from "@material-ui/core/Grid";
 import StarIcon from "@material-ui/icons/Star";
 import TextField from "@material-ui/core/TextField";
@@ -11,7 +22,7 @@ import TextField from "@material-ui/core/TextField";
 const Content = () => {
     const { t } = useTranslation();
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles( (theme) => ({
         root: {
             backgroundColor: 'white',
             display: 'flex',
@@ -19,6 +30,9 @@ const Content = () => {
             justifyContent: 'start',
             alignItems: 'start',
             marginRight: 40,
+            [theme.breakpoints.down('sm')]: {
+                marginRight: 0,
+            },
         },
         titleContainer: {
             width: '100%',
@@ -174,7 +188,47 @@ const Content = () => {
                 outline: 'none',
             }
         },
-    });
+        contactInfoContainer: {
+            marginTop: 20,
+            width: '100%',
+            display: 'flex',
+            alignItems: "center",
+            justifyContent: 'space-around',
+            [theme.breakpoints.down('xs')]: {
+                flexDirection: 'column',
+                alignItems: 'start',
+            },
+        },
+        contactInfo: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: 'start',
+            marginBottom: 8,
+        },
+        contactIconContainer: {
+            marginRight: 10,
+            padding: '5px 6px 3px 6px',
+            borderRadius: 50,
+            border: '2px solid #22e39e',
+        },
+        contactIcon: {
+        },
+        contactDetails: {
+            color: "black",
+            fontSize: 16,
+            backgroundColor: 'white',
+            border: 'none',
+            textDecoration: "none",
+            cursor: 'pointer',
+            marginRight: 10,
+            "&:hover": {
+                color: '#22e39e',
+            },
+            "&:focus": {
+                outline: 'none',
+            }
+        },
+    }));
 
     const classes = useStyles();
 
@@ -205,7 +259,7 @@ const Content = () => {
                 </div>
             </div>
             <div className={classes.keyFeature}>
-                <HomeIcon className={classes.featureIcon}/>
+                <PoolIcon className={classes.featureIcon}/>
                 <div className={classes.featureContent}>
                     <div className={classes.featureTitle}>
                         Swimming pool
@@ -216,7 +270,7 @@ const Content = () => {
                 </div>
             </div>
             <div className={classes.keyFeature}>
-                <HomeIcon className={classes.featureIcon}/>
+                <BeachAccessIcon className={classes.featureIcon}/>
                 <div className={classes.featureContent}>
                     <div className={classes.featureTitle}>
                         Close to the beach
@@ -254,7 +308,7 @@ const Content = () => {
             <Grid container spacing={3}>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.bedCard}>
-                        <HomeIcon className={classes.bedIcon}/>
+                        <KingBedIcon className={classes.bedIcon}/>
                         <div className={classes.featureTitle}>
                             Bedroom 1
                         </div>
@@ -266,19 +320,19 @@ const Content = () => {
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.bedCard}>
-                        <HomeIcon className={classes.bedIcon}/>
+                        <SingleBedIcon className={classes.bedIcon}/>
                         <div className={classes.featureTitle}>
                             Bedroom 2
                         </div>
                         <div className={classes.featureDescription}>
-                            1 queen bed
+                            3 single beds
                         </div>
 
                     </div>
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.bedCard}>
-                        <HomeIcon className={classes.bedIcon}/>
+                        <KingBedIcon className={classes.bedIcon}/>
                         <div className={classes.featureTitle}>
                             Bedroom 3
                         </div>
@@ -290,7 +344,7 @@ const Content = () => {
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.bedCard}>
-                        <HomeIcon className={classes.bedIcon}/>
+                        <KingBedIcon className={classes.bedIcon}/>
                         <div className={classes.featureTitle}>
                             Bedroom X
                         </div>
@@ -302,7 +356,7 @@ const Content = () => {
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.bedCard}>
-                        <HomeIcon className={classes.bedIcon}/>
+                        <KingBedIcon className={classes.bedIcon}/>
                         <div className={classes.featureTitle}>
                             Bedroom X
                         </div>
@@ -314,7 +368,7 @@ const Content = () => {
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.bedCard}>
-                        <HomeIcon className={classes.bedIcon}/>
+                        <KingBedIcon className={classes.bedIcon}/>
                         <div className={classes.featureTitle}>
                             Bedroom X
                         </div>
@@ -326,59 +380,75 @@ const Content = () => {
                 </Grid>
             </Grid>
             <Separator/>
-            <div className={classes.sectionTitle}>Amenities</div>
+            <div className={classes.sectionTitle} id={'amenities'}>Amenities</div>
             <Grid container spacing={3}>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.amenity}>
-                        <HomeIcon className={classes.amenityIcon}/>
+                        <KingBedIcon className={classes.amenityIcon}/>
                         <div className={classes.amenityTitle}>
-                            Bedroom 1
+                            x rooms
                         </div>
                     </div>
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.amenity}>
-                        <HomeIcon className={classes.amenityIcon}/>
+                        <BathtubIcon className={classes.amenityIcon}/>
                         <div className={classes.amenityTitle}>
-                            Bedroom 2
+                            x bathrooms
                         </div>
                     </div>
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.amenity}>
-                        <HomeIcon className={classes.amenityIcon}/>
+                        <PoolIcon className={classes.amenityIcon}/>
                         <div className={classes.amenityTitle}>
-                            Bedroom 3
+                            Big swimming pool
                         </div>
                     </div>
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.amenity}>
-                        <HomeIcon className={classes.amenityIcon}/>
+                        <OutdoorGrillIcon className={classes.amenityIcon}/>
                         <div className={classes.amenityTitle}>
-                            Bedroom X
+                            Barbecue & Outside kitchen area
                         </div>
                     </div>
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.amenity}>
-                        <HomeIcon className={classes.amenityIcon}/>
+                        <DeckIcon className={classes.amenityIcon}/>
                         <div className={classes.amenityTitle}>
-                            Bedroom X
+                            Outside dining area
                         </div>
                     </div>
                 </Grid>
                 <Grid item xs={6} sm={4} md={4} lg={4}>
                     <div className={classes.amenity}>
-                        <HomeIcon className={classes.amenityIcon}/>
+                        <NatureIcon className={classes.amenityIcon}/>
                         <div className={classes.amenityTitle}>
-                            Bedroom X
+                            Garden & orange trees
+                        </div>
+                    </div>
+                </Grid>
+                <Grid item xs={6} sm={4} md={4} lg={4}>
+                    <div className={classes.amenity}>
+                        <BeachAccessIcon className={classes.amenityIcon}/>
+                        <div className={classes.amenityTitle}>
+                            15 min walk to the beach
+                        </div>
+                    </div>
+                </Grid>
+                <Grid item xs={6} sm={4} md={4} lg={4}>
+                    <div className={classes.amenity}>
+                        <WifiIcon className={classes.amenityIcon}/>
+                        <div className={classes.amenityTitle}>
+                            Fast Wifi
                         </div>
                     </div>
                 </Grid>
             </Grid>
             <Separator/>
-            <div className={classes.sectionTitle}>Reviews</div>
+            <div className={classes.sectionTitle} id={'reviews'}>Reviews</div>
             <div>
                 <div className={classes.review}>
                     <div className={classes.reviewHeader}>
@@ -418,13 +488,13 @@ const Content = () => {
                 </div>
             </div>
             <Separator/>
-            <div className={classes.locationTitle}>Location</div>
+            <div className={classes.locationTitle} id={'location'}>Location</div>
             <p className={classes.paragraph}>Javea, Spain</p>
             <iframe width="100%" height="400px" id="gmap_canvas"
                     src="https://maps.google.com/maps?q=javea%20calle%20pedro%20berruguete&t=&z=7&ie=UTF8&iwloc=&output=embed"
                     frameBorder="Opx" scrolling="yes" marginHeight="2px" marginWidth="2px"></iframe>
             <Separator/>
-            <div className={classes.sectionTitle}>Contact us</div>
+            <div className={classes.sectionTitle} id={'contact'}>Contact us</div>
             <form noValidate autoComplete="off">
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
@@ -449,6 +519,24 @@ const Content = () => {
                     </Grid>
                 </Grid>
             </form>
+            <Grid className={classes.contactInfoContainer}>
+                <div className={classes.contactInfo}>
+                    <div className={classes.contactIconContainer}>
+                        <PhoneIcon className={classes.contactIcon}/>
+                    </div>
+                    <a className={classes.contactDetails}>
+                        06 12 34 56 78
+                    </a>
+                </div>
+                <div className={classes.contactInfo}>
+                    <div className={classes.contactIconContainer}>
+                        <MailIcon className={classes.contactIcon}/>
+                    </div>
+                    <a className={classes.contactDetails}>
+                        contactmail@gmail.com
+                    </a>
+                </div>
+            </Grid>
             <Separator/>
             <div className={classes.sectionTitle}>About us</div>
             <div className={classes.aboutUs}>

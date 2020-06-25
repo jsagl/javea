@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './i18n';
+import i18next from "i18next";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import DateFnsUtils from "@date-io/date-fns";
-import frLocale from "date-fns/locale/fr";
-import {MuiPickersUtilsProvider} from "@material-ui/pickers";
+
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
-import { DateTimePicker } from "@material-ui/pickers";
 
 const myTheme = createMuiTheme({
     palette: {
@@ -44,11 +42,9 @@ const myTheme = createMuiTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-      <MuiPickersUtilsProvider utils={DateFnsUtils} locale={frLocale}>
           <ThemeProvider theme={myTheme}>
                 <App/>
           </ThemeProvider>
-      </MuiPickersUtilsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

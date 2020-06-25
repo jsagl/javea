@@ -34,7 +34,7 @@ function App() {
          <div>
             <Navbar/>
             <Container maxWidth={"lg"} style={{paddingTop: 100}}>
-                <h2>{t("propertyTitle")}</h2>
+                <h2 id={'property-title'}>{t("propertyTitle")}</h2>
                 <ImageGrid/>
                 <div className={classes.container}>
                     <Content/>

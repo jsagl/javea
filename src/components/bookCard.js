@@ -2,10 +2,16 @@ import React, {useEffect} from 'react';
 import { useTranslation } from "react-i18next";
 import { getMonth } from 'date-fns';
 
+import DateFnsUtils from "@date-io/date-fns";
+import format from 'date-fns/format';
+import frLocale from "date-fns/locale/fr";
+import enLocale from "date-fns/locale/en-GB";
+import esLocale from "date-fns/locale/es";
+
 import { makeStyles } from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/Star';
 
-import { KeyboardDatePicker } from '@material-ui/pickers';
+import {KeyboardDatePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 import Grid from "@material-ui/core/Grid";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
@@ -13,6 +19,12 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Separator from "./separator";
+
+class LocalizedUtils extends DateFnsUtils {
+    getDatePickerHeaderText(date) {
+        return format(date, "d MMM yyyy", { locale: this.locale });
+    }
+}
 
 const BookCard = () => {
     const {t} = useTranslation();
@@ -133,6 +145,16 @@ const BookCard = () => {
     const [visibleProgress, setVisibleProgress] = React.useState(false);
     const [priceOrFill, setPriceOrFill] = React.useState('fill');
 
+    const i18nLanguageChangeListener = t('languageListener')
+
+    let dateLocale
+    if (i18nLanguageChangeListener === 'fr') {
+        dateLocale = frLocale
+    } else if (i18nLanguageChangeListener === 'es') {
+        dateLocale = esLocale
+    } else {
+        dateLocale = enLocale
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', () => handleScroll());
@@ -145,7 +167,7 @@ const BookCard = () => {
         const imageGridBottom = imageGrid.getBoundingClientRect().bottom
         const imageGridLeft = imageGrid.getBoundingClientRect().left
 
-        if (imageGridBottom -80 < 0) {
+        if (imageGridBottom - 80 < 0) {
             setPosition('fixed')
             setRight(imageGridLeft)
         } else {
@@ -188,6 +210,14 @@ const BookCard = () => {
         }
     }
 
+    const scrollToContact = () => {
+        const top = document.querySelector('#contact').offsetTop - 100;
+
+        window.scrollTo({
+            top: top,
+            behavior: 'smooth',
+        });
+    }
 
     let pricePerWeek;
     const month = getMonth(selectedDate); //(be careful it seems to start from 0 to 11)
@@ -237,109 +267,111 @@ const BookCard = () => {
     const discountPriceRowClass = discountRate > 0 ? classes.priceRow : classes.hidden
 
     return (
-        <div className={classes.root}>
-            <div className={classes.header}>
-                <div className={classes.title}>
-                    {priceOrFill === 'price' ? `${total / numOfWeeks}€ ` : t('addDatesForPrice')}
-                    <span style={{fontWeight: 'normal', fontSize: 16}}>{priceOrFill === 'price' ? `/ ${t('week')}` : ''}</span>
-                </div>
-                <div className={classes.reviews}>
-                    <div className={classes.rating}>
-                        <StarIcon className={classes.star}/>
-                        <div className={classes.ratingValue}>4.8</div>
+        <MuiPickersUtilsProvider utils={LocalizedUtils} locale={dateLocale}>
+            <div className={classes.root}>
+                <div className={classes.header}>
+                    <div className={classes.title}>
+                        {priceOrFill === 'price' ? `${total / numOfWeeks}€ ` : t('addDatesForPrice')}
+                        <span style={{fontWeight: 'normal', fontSize: 16}}>{priceOrFill === 'price' ? `/ ${t('week')}` : ''}</span>
                     </div>
-                    <div className={classes.ratingValue}>(34)</div>
+                    <div className={classes.reviews}>
+                        <div className={classes.rating}>
+                            <StarIcon className={classes.star}/>
+                            <div className={classes.ratingValue}>4.8</div>
+                        </div>
+                        <div className={classes.ratingValue}>(34)</div>
+                    </div>
                 </div>
-            </div>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <KeyboardDatePicker
-                        margin="normal"
-                        id="date-picker-dialog"
-                        label={t('startDate')}
-                        format="dd/MM/yyyy"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
+                <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                        <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label={t('startDate')}
+                            format="dd/MM/yyyy"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                    </Grid>
+                    <Grid item xs={6} style={{paddingTop: 28}}>
+                        <FormControl style={{width: '100%'}}>
+                            <InputLabel id="demo-simple-select-outlined-label">{t('numOfWeeks')}</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-outlined-label"
+                                id="demo-simple-select-outlined"
+                                value={numOfWeeks}
+                                onChange={handleChange}
+                                label="Number of weeks"
+                            >
+                                <MenuItem value={1}>{t('oneWeek')}</MenuItem>
+                                <MenuItem value={2}>{t('twoWeeks')}</MenuItem>
+                                <MenuItem value={3}>{t('threeWeeks')}</MenuItem>
+                                <MenuItem value={4}>{t('fourWeeks')}</MenuItem>
+                                <MenuItem value={5}>{t('fiveWeeks')}</MenuItem>
+                                <MenuItem value={6}>{t('sixWeeks')}</MenuItem>
+                                <MenuItem value={7}>{t('sevenWeeks')}</MenuItem>
+                                <MenuItem value={8}>{t('eightWeeks')}</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Grid>
                 </Grid>
-                <Grid item xs={6} style={{paddingTop: 28}}>
-                    <FormControl style={{width: '100%'}}>
-                        <InputLabel id="demo-simple-select-outlined-label">{t('numOfWeeks')}</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-outlined-label"
-                            id="demo-simple-select-outlined"
-                            value={numOfWeeks}
-                            onChange={handleChange}
-                            label="Number of weeks"
-                        >
-                            <MenuItem value={1}>{t('oneWeek')}</MenuItem>
-                            <MenuItem value={2}>{t('twoWeeks')}</MenuItem>
-                            <MenuItem value={3}>{t('threeWeeks')}</MenuItem>
-                            <MenuItem value={4}>{t('fourWeeks')}</MenuItem>
-                            <MenuItem value={5}>{t('fiveWeeks')}</MenuItem>
-                            <MenuItem value={6}>{t('sixWeeks')}</MenuItem>
-                            <MenuItem value={7}>{t('sevenWeeks')}</MenuItem>
-                            <MenuItem value={8}>{t('eightWeeks')}</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
-            </Grid>
-            <div className={circularProgressContainer}>
-                <CircularProgress />
+                <div className={circularProgressContainer}>
+                    <CircularProgress />
+                </div>
+                <div className={visiblePricingClass}>
+                    <div className={classes.priceRow}>
+                        <div>
+                            {`${pricePerWeek}€ x ${numOfWeeks} ${t('weeks')}`}
+                        </div>
+                        <div className={classes.subTotal}>
+                            {`${stayPrice}€`}
+                        </div>
+                    </div>
+                    <div className={discountPriceRowClass}>
+                        <div>
+                            {`${t('longStayDiscount')} - ${discountRate * 100}%`}
+                        </div>
+                        <div className={classes.subTotal}>
+                            {`- ${discount}€`}
+                        </div>
+                    </div>
+                    <div className={classes.priceRow}>
+                        <div>
+                            {t('cleaningFee')}
+                        </div>
+                        <div className={classes.subTotal}>
+                            {`${cleaningFee}€`}
+                        </div>
+                    </div>
+                    <div className={classes.priceRow}>
+                        <div>
+                            {t('occupancyFee')}
+                        </div>
+                        <div className={classes.subTotal}>
+                            {`${occupancyFee}€`}
+                        </div>
+                    </div>
+                    <Separator/>
+                    <div className={classes.priceRow}>
+                        <div className={classes.totalLabel}>
+                            {t('total')}
+                        </div>
+                        <div className={classes.total}>
+                            {`${total}€`}
+                        </div>
+                    </div>
+                </div>
+                <button className={priceBtnClass} onClick={checkPrice}>
+                    {t('checkPrices')}
+                </button>
+                <button className={contactBtnClass} onClick={scrollToContact}>
+                    {t('contactUs')}
+                </button>
             </div>
-            <div className={visiblePricingClass}>
-                <div className={classes.priceRow}>
-                    <div>
-                        {`${pricePerWeek}€ x ${numOfWeeks} ${t('weeks')}`}
-                    </div>
-                    <div className={classes.subTotal}>
-                        {`${stayPrice}€`}
-                    </div>
-                </div>
-                <div className={discountPriceRowClass}>
-                    <div>
-                        {`${t('longStayDiscount')} - ${discountRate * 100}%`}
-                    </div>
-                    <div className={classes.subTotal}>
-                        {`- ${discount}€`}
-                    </div>
-                </div>
-                <div className={classes.priceRow}>
-                    <div>
-                        {t('cleaningFee')}
-                    </div>
-                    <div className={classes.subTotal}>
-                        {`${cleaningFee}€`}
-                    </div>
-                </div>
-                <div className={classes.priceRow}>
-                    <div>
-                        {t('occupancyFee')}
-                    </div>
-                    <div className={classes.subTotal}>
-                        {`${occupancyFee}€`}
-                    </div>
-                </div>
-                <Separator/>
-                <div className={classes.priceRow}>
-                    <div className={classes.totalLabel}>
-                        {t('total')}
-                    </div>
-                    <div className={classes.total}>
-                        {`${total}€`}
-                    </div>
-                </div>
-            </div>
-            <button className={priceBtnClass} onClick={checkPrice}>
-                {t('checkPrices')}
-            </button>
-            <button className={contactBtnClass}>
-                {t('contactUs')}
-            </button>
-        </div>
+        </MuiPickersUtilsProvider>
     );
 }
 

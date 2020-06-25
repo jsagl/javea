@@ -16,6 +16,7 @@ i18n
                     navLinkLocation: "Location",
                     navLinkContact: 'Contact',
                     propertyTitle: "Beautiful family house in the heart of spanish Côte d'Azur",
+                    languageListener: 'en',
                     addDatesForPrice: 'Add dates for prices',
                     startDate: 'Start date',
                     numOfWeeks: 'Number of weeks',
@@ -44,6 +45,12 @@ i18n
                     navLinkReviews: "Avis",
                     navLinkLocation: "Localisation",
                     addDatesForPrice: 'Entrez vos dates pour les prix',
+                    languageListener: 'fr',
+                }
+            },
+            es: {
+                translations: {
+                    languageListener: 'es',
                 }
             }
         },
