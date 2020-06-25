@@ -128,25 +128,25 @@ const ImageGrid = () => {
         <div className={classes.root} id='image-grid'>
             <GridList cellHeight={160} className={classes.gridList} cols={6} rows={2}>
                 <GridListTile cols={4} rows={2} classes={{tile: classes.topLeftTile}}>
-                    <img className={classes.image} onClick={() => handleOpen(0)} src={imageList[0]} alt="house-picture" />
+                    <img className={classes.image} onClick={() => handleOpen(0)} src={imageList[0]} alt="house0" />
                 </GridListTile>
                 <GridListTile cols={2} rows={2} classes={{tile: classes.topRightTile}}>
-                    <img className={classes.image} onClick={() => handleOpen(1)} src={imageList[1]} alt="house-picture" />
+                    <img className={classes.image} onClick={() => handleOpen(1)} src={imageList[1]} alt="house1" />
                 </GridListTile>
                 <GridListTile cols={3} rows={1}>
-                    <img className={classes.image} onClick={() => handleOpen(2)} src={imageList[2]} alt="house-picture" />
+                    <img className={classes.image} onClick={() => handleOpen(2)} src={imageList[2]} alt="house2" />
                 </GridListTile>
                 <GridListTile cols={3} rows={1}>
-                    <img className={classes.image} onClick={() => handleOpen(3)} src={imageList[3]} alt="house-picture" />
+                    <img className={classes.image} onClick={() => handleOpen(3)} src={imageList[3]} alt="house3" />
                 </GridListTile>
                 <GridListTile cols={2} rows={1} classes={{tile: classes.bottomLeftTile}}>
-                    <img className={classes.image} onClick={() => handleOpen(4)} src={imageList[4]} alt="house-picture" />
+                    <img className={classes.image} onClick={() => handleOpen(4)} src={imageList[4]} alt="house4" />
                 </GridListTile>
                 <GridListTile cols={2} rows={1}>
-                    <img className={classes.image} onClick={() => handleOpen(5)} src={imageList[5]} alt="house-picture" />
+                    <img className={classes.image} onClick={() => handleOpen(5)} src={imageList[5]} alt="house5" />
                 </GridListTile>
                 <GridListTile cols={2} rows={1} classes={{tile: classes.bottomRightTile}}>
-                    <img className={classes.image} onClick={() => handleOpen(6)} src={imageList[6]} alt="house-picture" />
+                    <img className={classes.image} onClick={() => handleOpen(6)} src={imageList[6]} alt="house6" />
                 </GridListTile>
             </GridList>
             <div>
@@ -163,7 +163,7 @@ const ImageGrid = () => {
                                 <ArrowBackIosIcon className={classes.navIcon} style={{marginLeft: 10, marginTop: 1}} onClick={previousImage}/>
                             </div>
                         </div>
-                        <img className={classes.modalImage} src={imageList[openImage]} alt="house-picture" />
+                        <img className={classes.modalImage} src={imageList[openImage]} alt="house" />
                         <div className={classes.navContainer} style={{right: 0, paddingRight: 30,}}>
                             <div className={classes.iconContainer}>
                                 <ArrowForwardIosIcon className={classes.navIcon} style={{marginLeft: 5, marginTop: 1}} onClick={nextImage}/>

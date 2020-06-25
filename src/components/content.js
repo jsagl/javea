@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import Separator from "./separator";
 
 import HomeIcon from '@material-ui/icons/Home';
@@ -20,7 +20,7 @@ import StarIcon from "@material-ui/icons/Star";
 import TextField from "@material-ui/core/TextField";
 
 const Content = () => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
 
     const useStyles = makeStyles( (theme) => ({
         root: {
@@ -454,7 +454,7 @@ const Content = () => {
                     <div className={classes.reviewHeader}>
                         <div className={classes.reviewer}>Romain D.</div>
                         <div className={classes.stars}>
-                            {[...Array(5).keys()].map(() => <StarIcon className={classes.star}/>)}
+                            {[...Array(5).keys()].map((index) => <StarIcon className={classes.star} key={index + 123}/>)}
                         </div>
                         <div className={classes.reviewDate}>12/09/2019</div>
                     </div>
@@ -466,7 +466,7 @@ const Content = () => {
                     <div className={classes.reviewHeader}>
                         <div className={classes.reviewer}>Romain D.</div>
                         <div className={classes.stars}>
-                            {[...Array(5).keys()].map(() => <StarIcon className={classes.star}/>)}
+                            {[...Array(5).keys()].map((index) => <StarIcon className={classes.star} key={index + 324}/>)}
                         </div>
                         <div className={classes.reviewDate}>12/09/2019</div>
                     </div>
@@ -478,7 +478,7 @@ const Content = () => {
                     <div className={classes.reviewHeader}>
                         <div className={classes.reviewer}>Romain D.</div>
                         <div className={classes.stars}>
-                            {[...Array(5).keys()].map(() => <StarIcon className={classes.star}/>)}
+                            {[...Array(5).keys()].map((index) => <StarIcon className={classes.star} key={index + 442}/>)}
                         </div>
                         <div className={classes.reviewDate}>12/09/2019</div>
                     </div>
@@ -490,7 +490,7 @@ const Content = () => {
             <Separator/>
             <div className={classes.locationTitle} id={'location'}>Location</div>
             <p className={classes.paragraph}>Javea, Spain</p>
-            <iframe width="100%" height="400px" id="gmap_canvas"
+            <iframe width="100%" height="400px" id="gmap_canvas" title="house-location"
                     src="https://maps.google.com/maps?q=javea%20calle%20pedro%20berruguete&t=&z=7&ie=UTF8&iwloc=&output=embed"
                     frameBorder="Opx" scrolling="yes" marginHeight="2px" marginWidth="2px"></iframe>
             <Separator/>
@@ -524,7 +524,7 @@ const Content = () => {
                     <div className={classes.contactIconContainer}>
                         <PhoneIcon className={classes.contactIcon}/>
                     </div>
-                    <a className={classes.contactDetails}>
+                    <a href='tel:06-12-23' className={classes.contactDetails}>
                         06 12 34 56 78
                     </a>
                 </div>
@@ -532,7 +532,7 @@ const Content = () => {
                     <div className={classes.contactIconContainer}>
                         <MailIcon className={classes.contactIcon}/>
                     </div>
-                    <a className={classes.contactDetails}>
+                    <a href='mailto:contact@mail.com' className={classes.contactDetails}>
                         contactmail@gmail.com
                     </a>
                 </div>

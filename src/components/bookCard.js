@@ -240,6 +240,7 @@ const BookCard = () => {
             break;
         case 2:
             discountRate = 0.05;
+            break;
         case 3:
         case 4:
             discountRate = 0.10;
