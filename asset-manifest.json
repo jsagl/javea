@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/javea/static/css/main.c45dc39d.chunk.css",
-    "main.js": "/javea/static/js/main.71e6e44a.chunk.js",
-    "main.js.map": "/javea/static/js/main.71e6e44a.chunk.js.map",
+    "main.js": "/javea/static/js/main.e9404c3c.chunk.js",
+    "main.js.map": "/javea/static/js/main.e9404c3c.chunk.js.map",
     "runtime-main.js": "/javea/static/js/runtime-main.68c29850.js",
     "runtime-main.js.map": "/javea/static/js/runtime-main.68c29850.js.map",
     "static/js/2.00c5eaee.chunk.js": "/javea/static/js/2.00c5eaee.chunk.js",
     "static/js/2.00c5eaee.chunk.js.map": "/javea/static/js/2.00c5eaee.chunk.js.map",
     "index.html": "/javea/index.html",
-    "precache-manifest.439a3f88356d1367da404d37e54a3a35.js": "/javea/precache-manifest.439a3f88356d1367da404d37e54a3a35.js",
+    "precache-manifest.fa9ba1d7c017dc34e422fb8e5531d3e3.js": "/javea/precache-manifest.fa9ba1d7c017dc34e422fb8e5531d3e3.js",
     "service-worker.js": "/javea/service-worker.js",
     "static/css/main.c45dc39d.chunk.css.map": "/javea/static/css/main.c45dc39d.chunk.css.map",
     "static/js/2.00c5eaee.chunk.js.LICENSE.txt": "/javea/static/js/2.00c5eaee.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.68c29850.js",
     "static/js/2.00c5eaee.chunk.js",
     "static/css/main.c45dc39d.chunk.css",
-    "static/js/main.71e6e44a.chunk.js"
+    "static/js/main.e9404c3c.chunk.js"
   ]
 }
