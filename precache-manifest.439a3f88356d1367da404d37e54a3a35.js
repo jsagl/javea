@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b22b6c82633e130e9f83703524ea5383",
+    "revision": "cc2fd1fd91e7e1bfd3a461d5245eab91",
     "url": "/javea/index.html"
   },
   {
-    "revision": "07065a11306d4a089837",
+    "revision": "bcc3f6b577906e836d34",
     "url": "/javea/static/css/main.c45dc39d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/javea/static/js/2.00c5eaee.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "07065a11306d4a089837",
-    "url": "/javea/static/js/main.d3f7e911.chunk.js"
+    "revision": "bcc3f6b577906e836d34",
+    "url": "/javea/static/js/main.71e6e44a.chunk.js"
   },
   {
     "revision": "5aa6563ba59ca853134f",
